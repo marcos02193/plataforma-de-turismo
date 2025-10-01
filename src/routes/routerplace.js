@@ -12,8 +12,8 @@ const router = express.Router()
 router.post('/criarplaces',authenticate,isAdmin, validation(placeSchemas),createkeyadmin)
 router.get('/todoslocais',authenticate, placesall)
 router.get('/filtrelocais', authenticate, filtreget)
-router.put('/atualizarplaces/:id', upadatekeyadmin)
-router.delete('/deletarplaces/:id', deletekeyadmin)
+router.put('/atualizarplaces/:id', authenticate, isAdmin, validation(placeSchemas), upadatekeyadmin)
+router.delete('/deletarplaces/:id', authenticate, isAdmin, deletekeyadmin)
 
 
 export default router
